@@ -13,22 +13,22 @@ Create our First Container:
 
 `docker create -t -i --name firstContainer debian`
 
-Start Container:
+### Start Container:
 
 `docker start  firstContainer`
 
 
-**We can create a container and run directly by:
+### We can create a container and run directly by:
 
 `docker run -ti  --name SecondContainer --cpu-shares 1000 --memory 512m centos`
 
-**Our first Container we forgot to add cpu-shares and  memory,
+### Our first Container we forgot to add cpu-shares and  memory,
 
-**Let's modify it now:
+### Let's modify it now:
 
 `docker update  firstContainer --cpu-shares 1000 --memory 512 `
 
-**Let's check the updates:
+### Let's check the updates:
 
 `docker inspect firstContainer | grep -i cpu`
 
@@ -38,85 +38,85 @@ Start Container:
 CTRL + P + Q: to leave the container  without kill the container:
 CTRL + Q : To Kill the container
 
-**We can see all the containers running by:
+### We can see all the containers running by:
 
 `docker ps`
 
-**See all containers 
+### See all containers 
 
 `docker ps -a`
 
-**And to return to the container:
+### And to return to the container:
 
 `docker attach {CONTAINER ID or NAME}`
 
-To Stop,Start,Pause,Unpause a container we have to do:
+### To Stop,Start,Pause,Unpause a container we have to do:
 
 `docker start {Container ID or Name}` just replace start for what you want to do
 
 
-Volumes and DATA-ONLY:
+## Volumes and DATA-ONLY:
 
-Our first  volumes :
+### Our first  volumes :
 
 `docker run -ti -v /volume ubuntu /bin/bash`
 
-we can see if our volume is mounted by running:
+### We can see if our volume is mounted by running:
 
 `df -h`
 
-Obviously, we can see  by accessing :
+### Obviously, we can see  by accessing :
 
 `cd /`
 
 `ls -lha`
 
-Create a  file or a folder in volumes:
+### Create a  file or a folder in volumes:
 
 `cd volume  && touch DockerWorkshop`
 
-Now you can leave the container without kill the container by:
+### Now you can leave the container without kill the container by:
 
-CRTL + P  + Q
+### CRTL + P  + Q
 
-Now to find where our volume is mounted you can do:
+### Now to find where our volume is mounted you can do:
 
 `docker inspect  {CONTAINER ID or Name} -f {{.Mounts}}`
 
-Now enter inside the volume and you can see your file or folder 
+### Now enter inside the volume and you can see your file or folder 
 
 `cd /var/lib/docker/volumes/b127e735f50f0eb2ccf930593142e2d05c5781f93d81d0993caaaf39ac2784e5/_data`
 
-Now we will to create a new volume but i don't whant  that he mounts  wherever we whants
+### Now we will to create a new volume but i don't whant  that he mounts  wherever we whants
 
-In my machine :
+### In my machine :
 
 `mkdir /root/First_Dockerfile`
 
-Run:
+### Run:
 
 `docker run -ti -v /root/First_Dockerfile:volume ubuntu`
 
 `cd /volume`
 
-Create a Dockerfile we use it later.
+### Create a Dockerfile we use it later.
 
 `touch Dockerfile`
 
-CTRL + P + Q
+### CTRL + P + Q
 
 
-If we now access `cd /root/First_Dockerfile` we can see our Dockerfile.
+### If we now access `cd /root/First_Dockerfile` we can see our Dockerfile.
 
 
-**Data-only**
+## **Data-only**
 
-We gona create or db data to share  with others containers:
+### We gona create or db data to share  with others containers:
 
 `docker create -v/data --name dbdata centos`
 
 
-Let's create two containeres to use the same  data:
+### Let's create two containeres to use the same  data:
 
 
 `docker run -d -p 5432:5432 --name pgsql1 --volumes-from dbdados -e POSTGRESQL_USER=docker -e POSTGRESQL_PASS=docker kamui/postgresql`
@@ -124,17 +124,17 @@ Let's create two containeres to use the same  data:
 `docker run -d -p 5432:5433 --name pgsql2 --volumes-from dbdados -e POSTGRESQL_USER=docker -e POSTGRESQL_PASS=docker kamui/postgresql`
 
 
-run `docker inspect -f {{.Mounts}} dbdados`
+### run `docker inspect -f {{.Mounts}} dbdados`
 
 
-**Dockerfile:**
+## **Dockerfile:**
 
-First Dockerfile:
+### First Dockerfile:
  `cd /root/First_Dockerfile`
  `touc index.html`
  `vim Dockerfile`
  
- FROM debian
+ <-- FROM debian
 
 MAINTAINER Diogo Martins
 
@@ -144,9 +144,9 @@ COPY index.html  /var/www/html/
 
 ENTRYPOINT ["/usr/bin/apache2ctl", "-D", "FOREGROUND"]
 
-EXPOSE 80
+EXPOSE 80 -->
 
-Save the dockerfile and run:
+### Save the dockerfile and run:
 
 
 `docker build .`
@@ -157,70 +157,70 @@ Save the dockerfile and run:
 
 
 
-**Docker hub:**
+## **Docker hub:**
 Let's create our account in Docker Hub:
 https://hub.docker.com/
 
-Before using a container a run this command first
+### Before using a container a run this command first
 
 `docker inspect {NAME}`
 
-And:
+### And:
 
 `docker history {NAME}`
 
-Let's push our first image:
+### Let's push our first image:
 
-First we need to tag our image:
+### First we need to tag our image:
 
 `docker tag {CONTAINER ID or Name} {USERNAME of DOCKERHUB}/{NAME TO OUR IMAGE}:1.0`
-Let's make sure our image is created:
+### Let's make sure our image is created:
 
 `docker images | grep {NAMEofOURImage}`
 
-Login to Docker Hub:
+### Login to Docker Hub:
 
 `docker login`
 
-Let's push our  Image:
+### Let's push our  Image:
 
 `docker push {NameofUser}/{NameOFImage}:1.0` {1.0 === version}
 
-Let's search all images we have by using this command:
+### Let's search all images we have by using this command:
 
 `docker search {UserName of Docker Hub}`
 
-And now to pull one image :
+### And now to pull one image :
 
 `docker pull {UserName of DockerHub}/{CONTAINER ID OR NAME AND VERSION}` =>  diogomamartins/webserver:1.0
 
 
-**Portainer**/
+## **Portainer**/
 
 
-Portainer is a UI to docker to help us :
+### Portainer is a UI to docker to help us :
 
 `docker  run -d -p  9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer`
 
-Go to localhost:9000
+### Go to localhost:9000
 
-**Local Registry:**
+## **Local Registry:**
 `docker run -d -p 5000:5000 --restart=always --name registry registry:2`
 
 
 `docker tag aec1dc74cf14 localhost:5000/first_image:1.0`
 
-Push our image to our registry:
+### Push our image to our registry:
 
 `docker push  localhost:5000/first_image:1.0`
 
 
-To see all the images we have in registry :
+### To see all the images we have in registry :
 
 `curl localhost:5000/v2/_catalog`
 
 
-**Configuring network containers**
+## **Configuring network containers**
 
 `ifconfig `
 
