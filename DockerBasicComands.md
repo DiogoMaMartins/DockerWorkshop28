@@ -8,26 +8,27 @@
 **Managing containers:**
 --------------------
 
-####Create our First Container:
+Create our First Container:
+--------------------
 
 `docker create -t -i --name firstContainer debian`
 
-####Start Container:
+Start Container:
 
 `docker start  firstContainer`
 
 
-We can create a container and run directly by:
+**We can create a container and run directly by:
 
 `docker run -ti  --name SecondContainer --cpu-shares 1000 --memory 512m centos`
 
-Our first Container we forgot to add cpu-shares and  memory,
+**Our first Container we forgot to add cpu-shares and  memory,
 
-Let's modify it now:
+**Let's modify it now:
 
 `docker update  firstContainer --cpu-shares 1000 --memory 512 `
 
-Let's check the updates:
+**Let's check the updates:
 
 `docker inspect firstContainer | grep -i cpu`
 
@@ -37,17 +38,17 @@ Let's check the updates:
 CTRL + P + Q: to leave the container  without kill the container:
 CTRL + Q : To Kill the container
 
-We can see all the containers running by:
+**We can see all the containers running by:
 
 `docker ps`
 
-See all containers 
+**See all containers 
 
 `docker ps -a`
 
-And to return to the container:
+**And to return to the container:
 
-docker attach {CONTAINER ID or NAME}
+`docker attach {CONTAINER ID or NAME}`
 
 To Stop,Start,Pause,Unpause a container we have to do:
 
