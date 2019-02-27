@@ -1,5 +1,5 @@
 
-#*Some commands that we will use in this workshop*
+#**Some commands that we will use in this workshop**
 
 
 
@@ -62,7 +62,7 @@ we can see if our volume is mounted by running:
 
 `df -h`
 
-Obviously, we can see  by accessing /
+Obviously, we can see  by accessing :
 
 `cd /`
 
@@ -131,7 +131,7 @@ First Dockerfile:
  `touc index.html`
  `vim Dockerfile`
  
-    FROM debian
+ FROM debian
 
 MAINTAINER Diogo Martins
 
@@ -214,7 +214,7 @@ Push our image to our registry:
 
 To see all the images we have in registry :
 
-curl localhost:5000/v2/_catalog
+`curl localhost:5000/v2/_catalog`
 
 
 ##**Configuring network containers**
@@ -245,13 +245,13 @@ In container two you can send a ping to container1:
 
 Basic commands:
     
-docker run -ti --expose 80
+`docker run -ti --expose 80`
 
-docker run -ti --publish 8080:80 debian
+`docker run -ti --publish 8080:80 debian`
 
-docker run -ti --mac-address 12:34:de:b0:6b:61 debian
+`docker run -ti --mac-address 12:34:de:b0:6b:61 debian`
 
-ip addr
+`ip addr`
 
 Let's make a redirect to apache2
 
