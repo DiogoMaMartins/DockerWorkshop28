@@ -1,10 +1,10 @@
 
-#**Some commands that we will use in this workshop**
+**Some commands that we will use in this workshop**
 
 
 
 
-##**Managing containers:**
+**Managing containers:**
 
 Create our First Container:
 
@@ -52,7 +52,7 @@ To Stop,Start,Pause,Unpause a container we have to do:
 `docker start {Container ID or Name}` just replace start for what you want to do
 
 
-##Volumes and DATA-ONLY:
+Volumes and DATA-ONLY:
 
 Our first  volumes :
 
@@ -106,7 +106,7 @@ CTRL + P + Q
 If we now access `cd /root/First_Dockerfile` we can see our Dockerfile.
 
 
-##**Data-only**
+**Data-only**
 
 We gona create or db data to share  with others containers:
 
@@ -124,7 +124,7 @@ Let's create two containeres to use the same  data:
 run `docker inspect -f {{.Mounts}} dbdados`
 
 
-##**Dockerfile:**
+**Dockerfile:**
 
 First Dockerfile:
  `cd /root/First_Dockerfile`
@@ -154,7 +154,7 @@ Save the dockerfile and run:
 
 
 
-##**Docker hub:**
+**Docker hub:**
 Let's create our account in Docker Hub:
 https://hub.docker.com/
 
@@ -192,7 +192,7 @@ And now to pull one image :
 `docker pull {UserName of DockerHub}/{CONTAINER ID OR NAME AND VERSION}` =>  diogomamartins/webserver:1.0
 
 
-##**Portainer**/
+**Portainer**/
 
 
 Portainer is a UI to docker to help us :
@@ -201,7 +201,7 @@ Portainer is a UI to docker to help us :
 
 Go to localhost:9000
 
-##**Local Registry:**
+**Local Registry:**
 `docker run -d -p 5000:5000 --restart=always --name registry registry:2`
 
 
@@ -217,7 +217,7 @@ To see all the images we have in registry :
 `curl localhost:5000/v2/_catalog`
 
 
-##**Configuring network containers**
+**Configuring network containers**
 
 `ifconfig `
 
@@ -270,7 +270,7 @@ If we don't want to use docker0 ,we can use the host by :
 `docker run -ti --net=host debian`
 
 
-##**Docker machine**
+**Docker machine**
 
 For use Docker machine we need to install virtual box and docker-machine:
 
@@ -305,7 +305,7 @@ Show all the host available:
 
 `docker-machine rm swartz`
 
-##**Docker Compose**
+**Docker Compose**
 
 We need to install docker-compose in ubuntu:
 
