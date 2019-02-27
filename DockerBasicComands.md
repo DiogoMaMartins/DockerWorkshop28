@@ -1,16 +1,18 @@
 
 **Some commands that we will use in this workshop**
+=====================================================
 
 
 
 
 **Managing containers:**
+--------------------
 
-Create our First Container:
+####Create our First Container:
 
 `docker create -t -i --name firstContainer debian`
 
-Start Container:
+####Start Container:
 
 `docker start  firstContainer`
 
