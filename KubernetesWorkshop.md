@@ -120,7 +120,7 @@ put in comment.
 
 **Create a folder**
 
-`mkdir -p $HOME/.kube
+`mkdir -p $HOME/.kube`
 
 **we have to copie the files to this folder**
 
@@ -150,6 +150,34 @@ put in comment.
 **Now run again in the master machine**
 
 `kubectl get nodes`
+
+**To Know more about the node**
+
+`kubectl describe nodes {name}`
+
+**To see the pods of kubernetes**
+
+`kubectl get pods -n kube-sytem`
+
+**To Know more about the pod**
+
+`kubectl describe pod {name pod kube-apiserver} -n kube-system`
+
+**To find the ip:**
+
+`kubectl get pods -o wide -n kube-system`
+
+**To see all the deployments:**
+
+`kubectl get deployments`
+
+**To remove one deployments**
+
+`kubectl delete deployments {deploymentName}`
+
+**If you want to take all pods inside all namespaces:**
+
+`kubectl get pods --all-namespaces`
 
 **Let's create 10 replicas of nginx**
 
