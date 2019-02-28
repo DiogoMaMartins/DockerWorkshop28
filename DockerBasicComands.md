@@ -96,7 +96,7 @@ Create our First Container:
 
 **Run:**
 
-`docker run -ti -v /root/First_Dockerfile:volume ubuntu`
+`docker run -ti -v /root/First_Dockerfile:/volume ubuntu`
 
 `cd /volume`
 
