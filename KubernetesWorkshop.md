@@ -3,9 +3,9 @@
 
 **AutoComplete** `source <(kubectl completion bash)`
 
-##Let's install Kubectl
+## Let's install Kubectl
 
-###Linux:
+### Linux:
 
  `curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl`
 
@@ -13,7 +13,7 @@
 
 `chmod +x kubectl && mv kubectl /usr/local/bin/`
 
-###MacOs:
+### MacOs:
 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/darwin/amd64/kubectl
 
@@ -23,16 +23,16 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 
 If you prefer you can install by `brew install kubectl`
 
-###WINDOWS:
+### WINDOWS:
 
 `curl -Lo https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/windows/amd64/kubectl.exe`
 
 
 [https://kubernetes.io/docs/tasks/tools/install-minikube/](URL)
 
-##Let's install MINIKUBE
+## Let's install MINIKUBE
 
-###LINUX:
+### LINUX:
 
 `curl -Lo minikube https://github.com/kubernetes/minikube/releases/download/v0.28.0/minikube-linux-amd64`
 
@@ -40,7 +40,7 @@ If you prefer you can install by `brew install kubectl`
 
 `chmod +x minikube && mv minikube /usr/local/bin/`
 
-###MacOs:
+### MacOs:
 
 `curl -Lo minikube https://github.com/kubernetes/minikube/releases/download/v0.28.0/minikube-darwin-amd64`
 
@@ -49,14 +49,14 @@ If you prefer you can install by `brew install kubectl`
  `chmod +x minikube && mv minikube /usr/local/bin/`
 
 
-###WINDOWS:
+### WINDOWS:
 
 [https://github.com/kubernetes/minikube/releases/download/v0.25.0/minikube-windows-amd64](URL)
 ##Let's start the MINIKUBE:
 
 `minikube start`
 
-###To view all NODE
+### To view all NODE
 
 `kubectl get nodes`
 
@@ -90,7 +90,7 @@ If you prefer you can install by `brew install kubectl`
 
 `curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -`
 
-``
+
 
 **Create list kubernetes connected to source.list**
 
@@ -112,7 +112,7 @@ One Update:
 If you want to  turn of forever  go to `nano /etc/fstab` and
 put in comment.
 
-##let's start our server.
+## let's start our server.
 
 **In the first machine run:**
 
@@ -140,7 +140,7 @@ put in comment.
 
 `kubectl get nodes`
 
-##If the status is NotReady run:
+## If the status is NotReady run:
 
 **to have all the pods network**
 
